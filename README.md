@@ -7,6 +7,7 @@ Studying SQL language on practise
   - read data;
   - update data;
   - delete data;
+  
 **2) Tranzactions:**
   - ACID:
     - Atomicity;
