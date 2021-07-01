@@ -305,6 +305,7 @@ result:
  ```sql
 DELETE FROM users WHERE id = 1;
  ```
+result: Error
 #cascade:
  ```sql
 CREATE TABLE photos (
