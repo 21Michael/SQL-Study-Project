@@ -263,6 +263,7 @@ result:
  | http://256.jpg    | pferrer   |
  | http://25.jpg     | si93onis  |
  | http://36.jpg     | 99stroman |
+ 
 #if id of table1 doesn't exist in table2:
  ```sql
 SELECT * FROM photos
@@ -278,6 +279,7 @@ SELECT * FROM photos
  | id   | url               | user_id  |
  |------|-------------------|----------|
  | 1    | http://two.jpg    | 2686     |
+ 
 result: Error
 #if id of table1 doesn't exist in table2 (id: NULL):
 1) users
@@ -291,11 +293,13 @@ result: Error
  | id   | url               | user_id  |
  |------|-------------------|----------|
  | 1    | http://two.jpg    | null     | 
+ 
 result:
 
  | id   | url               | user_id  |
  |------|-------------------|----------|
  | 1    | http://two.jpg    | null     |
+ 
 # - Delete joined data (ON DELETE):
 #basic:
  ```sql
@@ -321,6 +325,7 @@ result:
 | 4    | http://754.jpg    | 2        |
 | 5    | http://35.jpg     | 2        |
 | 6    | http://256.jpg    | 2        |
+
 #set null:
  ```sql
 CREATE TABLE photos (
