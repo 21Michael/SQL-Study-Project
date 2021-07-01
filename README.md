@@ -247,7 +247,7 @@ result:
  
 ![link](https://drive.google.com/uc?id=1T0fglgZVUTgzWr7az4EuvhgpzBP9VfZI)
    
-# - Select data from joined tables (JOIN ON):
+# - Select data from joined tables (JOIN ON):  
 #basic:
  ```sql
 SELECT url, username FROM photos
@@ -264,7 +264,7 @@ result:
  | http://25.jpg     | si93onis  |
  | http://36.jpg     | 99stroman |
  
-#if id of table1 doesn't exist in table2:
+#if id of table1 doesn't exist in table2:  
  ```sql
 SELECT * FROM photos
  ```
@@ -280,8 +280,8 @@ SELECT * FROM photos
  |------|-------------------|----------|
  | 1    | http://two.jpg    | 2686     |
  
-result: Error
-#if id of table1 doesn't exist in table2 (id: NULL):
+result: Error  
+#if id of table1 doesn't exist in table2 (id: NULL):  
 1) users
 
  | id   | username  |
@@ -300,7 +300,7 @@ result:
  |------|-------------------|----------|
  | 1    | http://two.jpg    | null     |
  
-# - Delete joined data (ON DELETE):
+# - Delete joined data (ON DELETE):  
 #basic:
  ```sql
 DELETE FROM users WHERE id = 1;
