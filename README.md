@@ -308,7 +308,7 @@ JOIN users ON users.id = photos.user_id;
 ![link](https://drive.google.com/uc?id=1Ruokio9nZ2kiyAZgouDzGpNQ-f6PdATz)
 
 #if some of the rows doesn't have relation (JOIN TYPES):
-![link](https://drive.google.com/uc?id=1C_7ckv9XOfyV0552c3ybXwmPJ_o3cEmO)
+<https://drive.google.com/uc?id=1C_7ckv9XOfyV0552c3ybXwmPJ_o3cEmO>
 
 #filter joined data (JOIN + WHERE):
  ```sql
