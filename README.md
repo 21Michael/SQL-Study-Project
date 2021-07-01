@@ -2,7 +2,50 @@
 Studying SQL language on practise
 
 ---
-# **1) SQL syntax:**  
+# **1) Datatype:**
+---
+
+Text types
+
+| Data type        | Description                                                                                                                                                                                                                                                                                      |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CHAR(size)       | Holds a fixed length string (can contain letters, numbers, and special characters). The fixed size is specified in parenthesis. Can store up to 255 characters                                                                                                                                   |
+| VARCHAR(size)    | Holds a variable length string (can contain letters, numbers, and special characters). The maximum size is specified in parenthesis. Can store up to 255 characters. Note: If you put a greater value than 255 it will be converted to a TEXT type                                               |
+| TINYTEXT         | Holds a string with a maximum length of 255 characters                                                                                                                                                                                                                                           |
+| TEXT             | Holds a string with a maximum length of 65,535 characters                                                                                                                                                                                                                                        |
+| BLOB             | For BLOBs (Binary Large OBjects). Holds up to 65,535 bytes of data                                                                                                                                                                                                                               |
+| MEDIUMTEXT       | Holds a string with a maximum length of 16,777,215 characters                                                                                                                                                                                                                                    |
+| MEDIUMBLOB       | For BLOBs (Binary Large OBjects). Holds up to 16,777,215 bytes of data                                                                                                                                                                                                                           |
+| LONGTEXT         | Holds a string with a maximum length of 4,294,967,295 characters                                                                                                                                                                                                                                 |
+| LONGBLOB         | For BLOBs (Binary Large OBjects). Holds up to 4,294,967,295 bytes of data                                                                                                                                                                                                                        |
+| ENUM(x,y,z,etc.) | Let you enter a list of possible values. You can list up to 65535 values in an ENUM list. If a value is inserted that is not in the list, a blank value will be inserted.Note: The values are sorted in the order you enter them.You enter the possible values in this format: ENUM('X','Y','Z') |
+| SET              | Similar to ENUM except that SET may contain up to 64 list items and can store more than one choice                                                                                                                                                                                               |
+
+Number types
+
+| Data type       | Description                                                                                                                                                                                                                           |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TINYINT(size)   | -128 to 127 normal. 0 to 255 UNSIGNED*. The maximum number of digits may be specified in parenthesis                                                                                                                                  |
+| SMALLINT(size)  | -32768 to 32767 normal. 0 to 65535 UNSIGNED*. The maximum number of digits may be specified in parenthesis                                                                                                                            |
+| MEDIUMINT(size) | -8388608 to 8388607 normal. 0 to 16777215 UNSIGNED*. The maximum number of digits may be specified in parenthesis                                                                                                                     |
+| INT(size)       | -2147483648 to 2147483647 normal. 0 to 4294967295 UNSIGNED*. The maximum number of digits may be specified in parenthesis                                                                                                             |
+| BIGINT(size)    | -9223372036854775808 to 9223372036854775807 normal. 0 to 18446744073709551615 UNSIGNED*. The maximum number of digits may be specified in parenthesis                                                                                 |
+| FLOAT(size,d)   | A small number with a floating decimal point. The maximum number of digits may be specified in the size parameter. The maximum number of digits to the right of the decimal point is specified in the d parameter                     |
+| DOUBLE(size,d)  | A large number with a floating decimal point. The maximum number of digits may be specified in the size parameter. The maximum number of digits to the right of the decimal point is specified in the d parameter                     |
+| DECIMAL(size,d) | A DOUBLE stored as a string , allowing for a fixed decimal point. The maximum number of digits may be specified in the size parameter. The maximum number of digits to the right of the decimal point is specified in the d parameter |
+
+Date types
+
+| Data type   | Description                                                                                                                                                                                                                              |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DATE()      | A date. Format: YYYY-MM-DDNote: The supported range is from '1000-01-01' to '9999-12-31'                                                                                                                                                 |
+| DATETIME()  | *A date and time combination. Format: YYYY-MM-DD HH:MI:SSNote: The supported range is from '1000-01-01 00:00:00' to '9999-12-31 23:59:59'                                                                                                |
+| TIMESTAMP() | *A timestamp. TIMESTAMP values are stored as the number of seconds since the Unix epoch ('1970-01-01 00:00:00' UTC). Format: YYYY-MM-DD HH:MI:SSNote: The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC |
+| TIME()      | A time. Format: HH:MI:SSNote: The supported range is from '-838:59:59' to '838:59:59'                                                                                                                                                    |
+| YEAR()      | A year in two-digit or four-digit format.Note: Values allowed in four-digit format: 1901 to 2155. Values allowed in two-digit format: 70 to 69, representing years from 1970 to 2069                                                     |
+
+---
+# **2) SQL syntax:**  
 ---
 # **- Create table (CREATE):**  
 #basic:
@@ -79,7 +122,7 @@ DELETE FROM cities WHERE name = 'Kiev';
 ```
 
 ---
-# **2) SQL operators and functions:**  
+# **3) SQL operators and functions:**  
 ---
 
 # - STRING:  
@@ -142,14 +185,166 @@ SELECT name, area FROM cities WHERE area != 4000;
    - # BETWEEN val1 AND val2 (Is value between two other values?):
  ```sql
 SELECT name, area FROM cities WHERE area BETWEEN 4000 AND 5000;
- ```
+ ``` 
    - # NOT IN (Is the value not presented in a list?):
  ```sql
   SELECT name, area FROM cities WHERE name NOT IN ('Kharkiv', 'Kiev');
  ```
- 
+
+# **4) Relationships between tables:**
 ---
-# **3) Transactions:**
+# - Concepts: ONE TO MANY / MANY TO ONE:
+![link](https://drive.google.com/uc?id=1Hk3QN_KgQsuucXoiz8sS_eSm1rrLmqVB)
+# - Create tables with relation (PRIMARY KEY, REFERENCES):
+ ```sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50)
+);
+
+INSERT INTO users (username)
+VALUES
+	('monahan93'),
+  ('pferrer'),
+  ('si93onis'),
+  ('99stroman');
+
+CREATE TABLE photos (
+  id SERIAL PRIMARY KEY,
+  url VARCHAR(200),
+  user_id INTEGER REFERENCES users(id)
+);
+
+INSERT INTO photos (url, user_id)
+VALUES
+	('http://two.jpg', 1),
+  ('http://25.jpg', 1),
+  ('http://36.jpg', 1),
+  ('http://754.jpg', 2),
+  ('http://35.jpg', 3),
+  ('http://256.jpg', 4);
+ ```
+result: 
+ 1) users
+
+| id   | username  |
+|------|-----------|
+| 1    | monahan93 |
+| 2    | pferrer   |
+| 3    | si93onis  |
+| 4    | 99stroman |
+
+2) photos
+
+ | id   | url               | user_id  |
+ |------|-------------------|----------|
+ | 1    | http://two.jpg    | 1        |
+ | 2    | http://25.jpg     | 3        |
+ | 3    | http://36.jpg     | 4        |
+ | 4    | http://754.jpg    | 2        |
+ | 5    | http://35.jpg     | 2        |
+ | 6    | http://256.jpg    | 2        |
+![link](https://drive.google.com/uc?id=1T0fglgZVUTgzWr7az4EuvhgpzBP9VfZI)
+   
+# - Select data from joined tables (JOIN ON):
+#basic:
+ ```sql
+SELECT url, username FROM photos
+JOIN users ON users.id = photos.user_id;
+ ```
+result:
+
+ | url               | username  |
+ |-------------------|-----------|
+ | http://two.jpg    | monahan93 |
+ | http://754.jpg    | pferrer   |
+ | http://35.jpg     | pferrer   |
+ | http://256.jpg    | pferrer   |
+ | http://25.jpg     | si93onis  |
+ | http://36.jpg     | 99stroman |
+#if id of table1 doesn't exist in table2:
+ ```sql
+SELECT * FROM photos
+ ```
+1) users
+
+ | id   | username  |
+ |------|-----------|
+ | 1    | monahan93 |
+
+2) photos
+
+ | id   | url               | user_id  |
+ |------|-------------------|----------|
+ | 1    | http://two.jpg    | 2686     |
+result: Error
+#if id of table1 doesn't exist in table2 (id: NULL):
+1) users
+
+ | id   | username  |
+ |------|-----------|
+ | 1    | monahan93 |
+
+2) photos
+
+ | id   | url               | user_id  |
+ |------|-------------------|----------|
+ | 1    | http://two.jpg    | null     | 
+result:
+
+ | id   | url               | user_id  |
+ |------|-------------------|----------|
+ | 1    | http://two.jpg    | null     |
+# - Delete joined data (ON DELETE):
+#basic:
+ ```sql
+DELETE FROM users WHERE id = 1;
+ ```
+#cascade:
+ ```sql
+CREATE TABLE photos (
+  id SERIAL PRIMARY KEY,
+  url VARCHAR(200),
+  user_id INTEGER REFERENCES users(id)
+  ON DELETE CASCADE
+);
+
+DELETE FROM users WHERE id = 1;
+ ```
+result:
+
+| id   | url               | user_id  |
+|------|-------------------|----------|
+| 2    | http://25.jpg     | 3        |
+| 3    | http://36.jpg     | 4        |
+| 4    | http://754.jpg    | 2        |
+| 5    | http://35.jpg     | 2        |
+| 6    | http://256.jpg    | 2        |
+#set null:
+ ```sql
+CREATE TABLE photos (
+  id SERIAL PRIMARY KEY,
+  url VARCHAR(200),
+  user_id INTEGER REFERENCES users(id)
+  ON DELETE SET NULL
+);
+
+DELETE FROM users WHERE id = 1;
+ ```
+result:
+
+| id   | url               | user_id  |
+|------|-------------------|----------|
+| 1    | http://two.jpg    | null     |
+| 2    | http://25.jpg     | 3        |
+| 3    | http://36.jpg     | 4        |
+| 4    | http://754.jpg    | 2        |
+| 5    | http://35.jpg     | 2        |
+| 6    | http://256.jpg    | 2        |
+![link](https://drive.google.com/uc?id=1JyxYvcPwbZIWnjYBVBrqJzn4e9hw6UJh)
+
+---
+# **5) Transactions:**
 ---
 
 - ACID:
