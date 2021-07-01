@@ -1,15 +1,17 @@
 # SQL-Study-Project
 Studying SQL language on practise
 
-**1) SQL syntax:**
-   1. Create table (CREATE):  
+---
+# **1) SQL syntax:**  
+---
+# **- Create table (CREATE):**  
 #basic:
 ```sql
 CREATE TABLE table_name (
   column_name DATA TYPE,
 );
 ```
-   2. Insert data (INSERT):  
+# **- Insert data (INSERT):**  
 #insert one row:
 ```sql
 INSERT INTO table_name (column1, column2, column3, column4)
@@ -23,7 +25,7 @@ VALUES
 (value1, value2, value3, value4),
 (value1, value2, value3, value4);
 ```
-  3. Select data (SELECT):
+# **- Select data (SELECT):**  
 #select all:
 ```sql
 SELECT * FROM cities;
@@ -40,7 +42,7 @@ SELECT name || ', ' || country AS location FROM cities;
 
 SELECT CONCAT(name, ', ', country) AS location FROM cities;
 ```
-  3.1 Filter selected data (WHERE):
+# **- Filter selected data (WHERE):**  
 #filter data by comparison operators:
 ```sql
 SELECT name, area FROM cities WHERE area > 4000;
@@ -65,83 +67,91 @@ result: {
 SELECT population, area FROM cities WHERE population / area > 4000;
 ```
 
-  4. Update data (UPDATE):
-# basic (update every coincidence!!!):
+#  **- Update data (UPDATE):**  
+#basic (update every coincidence!!!):
 ```sql
 UPDATE cities SET popuation = 36346 WHERE name = 'Odessa';
 ```
-  5. Delete data (DELETE):
-# basic (delete every coincidence!!!):
+#  **- Delete data (DELETE):**  
+#basic (delete every coincidence!!!):
 ```sql
 DELETE FROM cities WHERE name = 'Kiev';
 ```
-**2) SQL operators and functions:**
-  - STRING:  
-#||:
+
+---
+# **2) SQL operators and functions:**  
+---
+
+# - STRING:  
+   - # ||:
  ```sql
  SELECT name || ', ' || country AS location FROM cities;
  ```
-#CONCAT():
+   - # CONCAT():
  ```sql
 SELECT CONCAT(name, ', ', country) AS location FROM cities;
  ```
-#LOWER():
+   - # LOWER():
  ```sql
  SELECT LOWER(CONCAT(name, ', ', country)) AS location FROM cities;
  ```
-#LENGTH():
+   - # LENGTH():
  ```sql
  SELECT name, LENGTH(name) as LengthOfName FROM cities;
  ```
-#UPPER():
+   - # UPPER():
  ```sql
 SELECT
   UPPER(CONCAT(name, ', ', country)) AS location
 FROM
   cities;
  ```
-  - COMPARISON OPERATORS:
-# = (Is the value equal to?):
+# - COMPARISON OPERATORS:    
+   - # = (Is the value equal to?):
  ```sql
 SELECT name, area FROM cities WHERE area = 4000;
  ```
-# >:
+   - # >:
  ```sql
 SELECT name, area FROM cities WHERE area > 4000;
  ```
-# <:
+   - # <:
  ```sql
 SELECT name, area FROM cities WHERE area < 4000;
  ```
-# >=:
+   - # >=:
  ```sql
 SELECT name, area FROM cities WHERE area >= 4000;
  ```
-# IN (Is value presented in a list?):
+   - # IN (Is value presented in a list?):
  ```sql
  SELECT name, area FROM cities WHERE name IN ('Kharkiv', 'Kiev');
  ```
-# <=:
+   - # <=:
  ```sql
 SELECT name, area FROM cities WHERE area <= 4000;
  ```
-# <> (!=):
+   - # <> (!=):
  ```sql
 SELECT name, area FROM cities WHERE area <> 4000;
  ```
-# !=:
+   - # !=:
  ```sql
 SELECT name, area FROM cities WHERE area != 4000;
  ```
-# BETWEEN val1 AND val2 (Is value between two other values?):
+   - # BETWEEN val1 AND val2 (Is value between two other values?):
  ```sql
 SELECT name, area FROM cities WHERE area BETWEEN 4000 AND 5000;
  ```
-# NOT IN (Is the value not presented in a list?):
+   - # NOT IN (Is the value not presented in a list?):
  ```sql
   SELECT name, area FROM cities WHERE name NOT IN ('Kharkiv', 'Kiev');
  ```
-**3) Transactions:**
+ 
+---
+# **3) Transactions:**
+---
+
 - ACID:
   - Atomicity;
   - Consistency;
