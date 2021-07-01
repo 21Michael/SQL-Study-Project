@@ -280,7 +280,7 @@ SELECT * FROM photos
  |------|-------------------|----------|
  | 1    | http://two.jpg    | 2686     |
  
-result: Error  
+result: **Error**    
 #if id of table1 doesn't exist in table2 (id: NULL):  
 1) users
 
@@ -305,7 +305,7 @@ result:
  ```sql
 DELETE FROM users WHERE id = 1;
  ```
-result: Error
+result: **Error**    
 #cascade:
  ```sql
 CREATE TABLE photos (
