@@ -299,7 +299,35 @@ result:
  | id   | url               | user_id  |
  |------|-------------------|----------|
  | 1    | http://two.jpg    | null     |
- 
+
+#if column with same name repeated in both tables (table.column):
+ ```sql
+SELECT photos.id FROM photos
+JOIN users ON users.id = photos.user_id;
+ ```
+![link](https://drive.google.com/uc?id=1Ruokio9nZ2kiyAZgouDzGpNQ-f6PdATz)
+
+#if some of the rows doesn't have relation (JOIN TYPES):
+![link](https://drive.google.com/uc?id=1C_7ckv9XOfyV0552c3ybXwmPJ_o3cEmO)
+
+#filter joined data (JOIN + WHERE):
+ ```sql
+SELECT url, photos
+FROM comments
+JOIN photos ON photos.id = comments.photo_id;
+WHERE comments.user_id - photos.user_id;
+ ```
+![link](https://drive.google.com/uc?id=10jVMi3Z_JRnBeFJhTAzgmRkgKtsHTQ5T)
+
+#join 3 tables (JOIN ON):
+ ```sql
+SELECT url, photos, username
+FROM comments
+JOIN photos ON photos.id = comments.photo_id;
+Join users ON users.id = photos.user_id AND users.id = comments.user_id
+ ```
+![link](https://drive.google.com/uc?id=1Io8I2dBaQszIkWCqsgRBfsQ8Gpu6EqfA)
+
 # - Delete joined data (ON DELETE):  
 #basic:
  ```sql
