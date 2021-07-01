@@ -244,6 +244,7 @@ result:
  | 4    | http://754.jpg    | 2        |
  | 5    | http://35.jpg     | 2        |
  | 6    | http://256.jpg    | 2        |
+ 
 ![link](https://drive.google.com/uc?id=1T0fglgZVUTgzWr7az4EuvhgpzBP9VfZI)
    
 # - Select data from joined tables (JOIN ON):
@@ -341,6 +342,7 @@ result:
 | 4    | http://754.jpg    | 2        |
 | 5    | http://35.jpg     | 2        |
 | 6    | http://256.jpg    | 2        |
+
 ![link](https://drive.google.com/uc?id=1JyxYvcPwbZIWnjYBVBrqJzn4e9hw6UJh)
 
 ---
