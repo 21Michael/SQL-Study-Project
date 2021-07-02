@@ -190,9 +190,36 @@ SELECT name, area FROM cities WHERE area BETWEEN 4000 AND 5000;
  ```sql
   SELECT name, area FROM cities WHERE name NOT IN ('Kharkiv', 'Kiev');
  ```
+# - AGGREGATE FUNCTIONS:  
+   - # COUNT() (number of values in column != null):
+ ```sql
+SELECT COUNT(id) FROM cities;
+ ```
+#for counting amount of rows in column better use:
+ ```sql
+SELECT COUNT(*) FROM cities;
+ ```
+   - # SUM() (sum of values from column of numbers):
+ ```sql
+SELECT SUM(area) FROM cities WHERE country = 'Ukraine';
+ ```   
+   - # AVG() (average value from column of numbers):
+ ```sql
+SELECT AVG(population) FROM cities;
+ ```   
+   - # MIN() (min value from column of numbers):
+ ```sql
+SELECT MIN(population) FROM cities;
+ ```   
+   - # MAX() (max value from column of numbers):
+ ```sql
+SELECT MAX(population) FROM cities;
+ ```
 
+---
 # **4) Relationships between tables:**
 ---
+
 # - Concepts: ONE TO MANY / MANY TO ONE:
 ![link](https://drive.google.com/uc?id=1Hk3QN_KgQsuucXoiz8sS_eSm1rrLmqVB)
 # - Create tables with relation (PRIMARY KEY, REFERENCES):
@@ -246,8 +273,11 @@ result:
  | 6    | http://256.jpg    | 2        |
  
 ![link](https://drive.google.com/uc?id=1T0fglgZVUTgzWr7az4EuvhgpzBP9VfZI)
-   
-# - Select data from joined tables (JOIN ON):  
+
+---
+# **4.1) Select data from joined tables (JOIN ON):**   
+---
+
 #basic:
  ```sql
 SELECT url, username FROM photos
@@ -308,7 +338,7 @@ JOIN users ON users.id = photos.user_id;
 ![link](https://drive.google.com/uc?id=1Ruokio9nZ2kiyAZgouDzGpNQ-f6PdATz)
 
 #if some of the rows doesn't have relation (JOIN TYPES):
-<https://drive.google.com/uc?id=1C_7ckv9XOfyV0552c3ybXwmPJ_o3cEmO>
+![link](https://drive.google.com/uc?id=1JvMmO2aZzxLMbyT3_6KEfhcNN014CV4a)
 
 #filter joined data (JOIN + WHERE):
  ```sql
@@ -380,7 +410,41 @@ result:
 ![link](https://drive.google.com/uc?id=1JyxYvcPwbZIWnjYBVBrqJzn4e9hw6UJh)
 
 ---
-# **5) Transactions:**
+# **4.2) Select data from grouped tables (GROUP BY):**  
+---
+#basic (allowed selecting columns only by witch table was grouped!!!):
+ ```sql
+SELECT user_id
+FROM comments
+GROUP BY user_id
+ ```
+result:
+![link](https://drive.google.com/uc?id=16nyugmLnL2uayVQo_hfGKmP1CSpgr86_)
+
+---
+# **4.3) Select grouped data by aggregate functions (GROUP BY + aggregation functions):**  
+---
+#basic (allowed selecting columns from grouped rows!!!):
+ ```sql
+SELECT MAX(id)
+FROM comments
+GROUP BY user_id
+ ```
+result:
+![link](https://drive.google.com/uc?id=1UmJqsLCF3ue1jrNFvKvX_pD2EMxTWUDo)
+
+# - Filtering grouped data (GROUP BY + HAVING):  
+ ```sql
+SELECT photo_id, COUNT(*)
+FROM comments
+WHERE photo_id < 3
+GROUP BY photo_id
+HAVING COUNT(*) > 2;
+ ```
+result:
+![link](https://drive.google.com/uc?id=1NX-BU3C2nYta9oXPjy7WY2g3PUrPyPbV)
+---
+# **5) Transactions:**  
 ---
 
 - ACID:
