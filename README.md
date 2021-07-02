@@ -94,16 +94,22 @@ SELECT name, area FROM cities WHERE area > 4000;
 ```sql
 SELECT name, area FROM cities WHERE area > 4000 AND name IN ('Kiev', 'Kharkiv');
 ```
-result: { name: 'Kiev' area: 4574}
+result:  
+
+| id   | name   | area |
+|------|--------|------|
+| 1    | Kiev   | 5000 |
 
 #filter data by many filters if at least one is true (WHERE + OR):
 ```sql
 SELECT name, area FROM cities WHERE area > 4000 OR name IN ('Kiev', 'Kharkiv');
 ```
-result: {   
-  name: 'Kiev' area: 2000,  
-  name: 'Odessa' area: 4500,  
-}
+result:  
+
+| id   | name   | area |
+|------|--------|------|
+| 1    | Kiev   | 2000 |
+| 2    | Odessa | 4500 |
 
 #filter data by calculated filter (WHERE + operators):
 ```sql
@@ -120,6 +126,54 @@ UPDATE cities SET popuation = 36346 WHERE name = 'Odessa';
 ```sql
 DELETE FROM cities WHERE name = 'Kiev';
 ```
+
+#  **- Sort data (ORDER BY):**
+#descending (DESC):
+```sql
+SELECT name FROM cities ORDER BY name DESC;
+```
+result:  
+
+| id   | name      |
+|------|-----------|
+| 3    | Chicago   |
+| 2    | Budapest  |
+| 1    | Alushta   |
+
+#ascending *default (ASC):
+```sql
+SELECT name FROM cities ORDER BY name ASC;
+```
+result:  
+
+| id   | name      |
+|------|-----------|
+| 1    | Alushta   |
+| 2    | Budapest  |
+| 3    | Chicago   |
+
+#  **- Limit amount of selecting data (LIMIT):**
+#basic:
+```sql
+SELECT name FROM cities LIMIT 1;
+```
+result:  
+
+| id   | name      |
+|------|-----------|
+| 1    | Alushta   |
+
+#  **- Offset (start from) selecting data (OFFSET):**
+#basic:
+```sql
+SELECT name FROM cities OFFSET 1;
+```
+result:  
+
+| id   | name      |
+|------|-----------|
+| 2    | Budapest  |
+| 3    | Chicago   |
 
 ---
 # **3) SQL operators and functions:**  
@@ -275,7 +329,7 @@ result:
 ![link](https://drive.google.com/uc?id=1T0fglgZVUTgzWr7az4EuvhgpzBP9VfZI)
 
 ---
-# **4.1) Select data from joined tables (JOIN ON):**   
+# **5) Select data from joined tables (JOIN ON):**   
 ---
 
 #basic:
@@ -351,7 +405,7 @@ WHERE comments.user_id - photos.user_id;
 
 #join 3 tables (JOIN ON):
  ```sql
-SELECT url, photos, username
+SELECT contents, url, username
 FROM comments
 JOIN photos ON photos.id = comments.photo_id;
 Join users ON users.id = photos.user_id AND users.id = comments.user_id
@@ -410,7 +464,7 @@ result:
 ![link](https://drive.google.com/uc?id=1JyxYvcPwbZIWnjYBVBrqJzn4e9hw6UJh)
 
 ---
-# **4.2) Select data from grouped tables (GROUP BY):**  
+# **6) Select data from grouped tables (GROUP BY):**  
 ---
 #basic (allowed selecting columns only by witch table was grouped!!!):
  ```sql
@@ -422,7 +476,7 @@ result:
 ![link](https://drive.google.com/uc?id=16nyugmLnL2uayVQo_hfGKmP1CSpgr86_)
 
 ---
-# **4.3) Select grouped data by aggregate functions (GROUP BY + aggregation functions):**  
+# **6.1) Select grouped data by aggregate functions (GROUP BY + aggregation functions):**  
 ---
 #basic (allowed selecting columns from grouped rows!!!):
  ```sql
@@ -430,7 +484,7 @@ SELECT MAX(id)
 FROM comments
 GROUP BY user_id
  ```
-result:
+result:  
 ![link](https://drive.google.com/uc?id=1UmJqsLCF3ue1jrNFvKvX_pD2EMxTWUDo)
 
 # - Filtering grouped data (GROUP BY + HAVING):  
@@ -444,7 +498,7 @@ HAVING COUNT(*) > 2;
 result:
 ![link](https://drive.google.com/uc?id=1NX-BU3C2nYta9oXPjy7WY2g3PUrPyPbV)
 ---
-# **5) Transactions:**  
+# **7) Transactions:**  
 ---
 
 - ACID:
