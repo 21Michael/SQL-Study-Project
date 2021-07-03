@@ -136,9 +136,9 @@ result:
 
 | id   | name      |
 |------|-----------|
-| 3    | Chicago   |
-| 2    | Budapest  |
-| 1    | Alushta   |
+| 1    | Chicago   |
+| 3    | Budapest  |
+| 2    | Alushta   |
 
 #ascending *default (ASC):
 ```sql
@@ -148,9 +148,9 @@ result:
 
 | id   | name      |
 |------|-----------|
-| 1    | Alushta   |
-| 2    | Budapest  |
-| 3    | Chicago   |
+| 2    | Alushta   |
+| 3    | Budapest  |
+| 1    | Chicago   |
 
 #  **- Limit amount of selecting data (LIMIT):**
 #basic:
@@ -161,7 +161,7 @@ result:
 
 | id   | name      |
 |------|-----------|
-| 1    | Alushta   |
+| 2    | Alushta   |
 
 #  **- Offset (start from) selecting data (OFFSET):**
 #basic:
@@ -172,8 +172,94 @@ result:
 
 | id   | name      |
 |------|-----------|
-| 2    | Budapest  |
-| 3    | Chicago   |
+| 3    | Budapest  |
+| 1    | Chicago   |
+
+---
+# **2.1) Unit two queries (can unite only columns with same names and data types!!!):**
+---
+
+#  **- Select data from two queries with all common rows from both queries (UNION ALL):**
+#basic:
+```sql
+(
+  SELECT * FROM cities 
+  ORDER BY name
+  LIMIT 3
+)
+UNION ALL
+(
+  SELECT * FROM cities 
+  ORDER BY population
+  LIMIT 3
+);
+```
+result:
+1) order by name:  
+
+| id   | name      | population |
+|------|-----------|------------|
+| 9    | Alushta   | 1000       |
+| 3    | Budapest  | 3000       |
+| 1    | Chicago   | 2000       |
+
+2) order by population:  
+
+| id   | name        | population |
+|------|-------------|------------|
+| 7    | New York    | 8000       |
+| 35   | Los Angeles | 5000       |
+| 3    | Budapest    | 3000       |
+
+3) united:  
+
+| id   | name        | population |
+|------|-------------|------------|
+| 9    | Alushta     | 1000       |
+| 3    | Budapest    | 3000       |
+| 1    | Chicago     | 2000       |
+| 7    | New York    | 8000       |
+| 35   | Los Angeles | 5000       |
+| 3    | Budapest    | 3000       |
+
+#  **- Select data from two queries excepting all common rows from both queries (UNION):**
+result (senseless, every order are broken!!!):
+
+| id   | name        | population |
+|------|-------------|------------|
+| 9    | Alushta     | 1000       |
+| 35   | Los Angeles | 5000       |
+| 1    | Chicago     | 2000       |
+
+#  **- Select same rows from two queries without duplicates (INTERSECT):**
+result:
+
+| id   | name        | population |
+|------|-------------|------------|
+| 3    | Budapest    | 3000       |
+
+#  **- Select same rows from two queries (INTERSECT ALL):**
+result:
+
+| id   | name        | population |
+|------|-------------|------------|
+| 3    | Budapest    | 3000       |
+
+#  **- Select rows that exist in first query but doesn't in second without duplicates (EXCEPT):**
+result:
+
+| id   | name      | population |
+|------|-----------|------------|
+| 9    | Alushta   | 1000       |
+| 1    | Chicago   | 2000       |
+
+#  **- Select rows that exist in first query but doesn't in second (EXCEPT ALL):**
+result:
+
+| id   | name      | population |
+|------|-----------|------------|
+| 9    | Alushta   | 1000       |
+| 1    | Chicago   | 2000       |
 
 ---
 # **3) SQL operators and functions:**  
