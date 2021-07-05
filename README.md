@@ -85,6 +85,104 @@ SELECT name || ', ' || country AS location FROM cities;
 
 SELECT CONCAT(name, ', ', country) AS location FROM cities;
 ```
+#select unique values from column (DISTINCT):  
+existing table:  
+
+| id         |city         | office       | population     |
+|------------|-------------|--------------|----------------|
+| 25543      | Kiev        | 1            | 5000           |
+| 24542      | Kiev        | 2            | 8000           |
+| 26545      | Kiev        | 3            | 1000           |
+| 46346      | Kharkiv     | 1            | 5000           |
+| 45366      | Kharkiv     | 2            | 6000           |
+| 48336      | Kharkiv     | 3            | 12000          |
+
+```sql
+SELECT DISTINCT city FROM offices;
+```
+result:  
+
+| city       |
+|------------|
+| Kiev       |
+| Kharkiv    |
+
+#select the greatest value from list of values (GREATEST):
+```sql
+SELECT GREATEST(300, 400, 200);
+```
+result:  
+400  
+
+select values grater than 30 or less:   
+existing table:  
+
+| price      |
+|------------|
+| 23         |
+| 106        |
+| 13         |
+| 56         |
+| 02         |
+| 73         |
+
+```sql
+SELECT GREATEST(30, price) FROM price;
+```
+result:  
+
+| greatest   |
+|------------|
+| less       |
+| 106        |
+| less       |
+| 56         |
+| less       |
+| 73         |
+
+#select the least value from list of values (LEAST):  
+```sql
+SELECT GREATEST(300, 400, 200);
+```
+result:  
+200
+
+select values least than 30 or :  
+```sql
+SELECT LEAST(price, 30) FROM price;
+```
+result:
+
+| least      |
+|------------|
+| 23         |
+| high       |
+| 13         |
+| high       |
+| 02         |
+| high       |
+
+#select by switch case analog (CASE):
+```sql
+SELECT 
+CASE
+  WHEN price > 50 THEN 'high'
+  WHEN pricce < 20 THEN 'low'
+  ELSE 'medium'
+END
+FROM price;
+```
+result:  
+
+| price      |
+|------------|
+| 'medium'   |
+| 'high'     |
+| 'low'      |
+| 'high'     |
+| 'low'      |
+| 'high'     |
+
 # **- Filter selected data (WHERE):**  
 #filter data by comparison operators:
 ```sql
