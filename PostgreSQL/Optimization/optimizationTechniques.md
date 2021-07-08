@@ -72,11 +72,10 @@ DROP INDEX index_name_idx;
 ![link](https://drive.google.com/uc?id=1bxoEGYo2yjHsvpphNYnWRhBEKCO5CS4d)
 
 #4) Querying many values (example: 600 000):  
-# indexed values loading speed: **26 932**;  
-# values loading speed: **6 733**;   
+#indexed values loading speed: **26 932**;  
+#values loading speed: **6 733**;   
 
-#Conclusion: for selecting many values sequel search (load all data to RAM and search one by one) much faster!!!!  
-#*Postgresql automatically change random search (un-indexing column) to sequel search if it sees that indexing doesn't bring benefit!  
+# Conclusion: for selecting many values sequel search (load all data to RAM and search one by one) much faster!!!! *Postgresql automatically change random search (un-indexing column) to sequel search if it sees that indexing doesn't bring benefit!  
 
 ---
 # **4) Query benchmarking:**
