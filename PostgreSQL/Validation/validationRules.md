@@ -50,6 +50,12 @@ CREATE TABLE table_name (
   column_name DATA TYPE CHECK(column_name >,<,!=,=... value),
 );
 ```
+#OR, IS, AND:
+```sql
+CREATE TABLE table_name (
+  column_name DATA TYPE CHECK(column_name IS NULL OR (column_name <= 100 AND column_name >= 50)),
+);
+```
 #set rule when creating table (comparing with value from other column):
 ```sql
 CREATE TABLE table_name (
