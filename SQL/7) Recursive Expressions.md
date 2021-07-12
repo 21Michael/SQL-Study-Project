@@ -11,8 +11,10 @@
 #  **- Example:**  
 #Existing tables:  
 ![link](https://drive.google.com/uc?id=1L3E-C_UqVILAxJy9IoaEkfysbeqmpYg5)
+
 #Selecting data-structure:  
 ![link](https://drive.google.com/uc?id=10NuwlES_8xGNwylOC1SKcev48vwh3Ub6)
+
 #Code:  
  ```sql
 WITH RECURSIVE related_followers(follower_id, user_id, depth) AS (
