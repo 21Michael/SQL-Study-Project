@@ -237,26 +237,26 @@ WHERE population = (
   WHERE of2.city = of1.city
 );
 ```
-iterations:  
-1.1)sub-query (max population for Kiev = Kiev):  
+#Iterations:  
+1.1) sub-query (max population for Kiev = Kiev):  
 8000  
-1.2)city, office, population (population = 8000):
+1.2) city, office, population (population = 8000):  
 
 | city         | office       | population     |
 |--------------|--------------|----------------|
 | Kiev         | 2            | 8000           |
 
-2.1)sub-query (max population for Kharkiv = Kharkiv):  
+2.1) sub-query (max population for Kharkiv = Kharkiv):  
 12000  
-2.2)city, office, population (population = 12000):
+2.2) city, office, population (population = 12000):
 
 | city         | office       | population     |
 |--------------|--------------|----------------|
 | Kharkiv      | 3            | 12000          |
 
-3.1)sub-query (max population for Lviv = Lviv):  
+3.1) sub-query (max population for Lviv = Lviv):  
 8000  
-3.2)city, office, population (population = 8000):
+3.2) city, office, population (population = 8000):
 
 | city         | office       | population     |
 |--------------|--------------|----------------|
