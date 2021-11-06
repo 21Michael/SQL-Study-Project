@@ -1,7 +1,8 @@
+# 1) Common Table Expression (optimizing sub-query expressions):
+
 ---
-# **1) Common Table Expression (optimizing sub-query expressions):**  
----
-#sub-query expression:  
+## Example:  
+**Sub-query expression:**  
 ```sql
 SELECT id, name 
 FROM counties
@@ -10,7 +11,8 @@ JOIN (
 ) AS EU_countries
 ON EU_countries.country_id = countries.id
 ```
-#sub-query optimized by common-table-expression (WITH ... AS):
+
+**Sub-query optimized by common-table-expression (WITH ... AS):**
 ```sql
 WITH EU_countries AS (
   SELECT country_id FROM unions WHERE union_name = 'European union'

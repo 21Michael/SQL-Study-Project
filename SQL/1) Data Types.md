@@ -1,5 +1,5 @@
----
-# **1) Datatype:**
+#**1) Datatype:**
+
 ---
 
 Text types

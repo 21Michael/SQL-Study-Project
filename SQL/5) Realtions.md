@@ -1,10 +1,11 @@
----
-# **5) Relations between tables:**
+#5) Relations between tables:
+
 ---
 
-# - Concepts: ONE TO MANY / MANY TO ONE:
+## - Concepts: ONE TO MANY / MANY TO ONE:
 ![link](https://drive.google.com/uc?id=1Hk3QN_KgQsuucXoiz8sS_eSm1rrLmqVB)
-# - Create tables with relation (PRIMARY KEY, REFERENCES):
+
+## - Create tables with relation (PRIMARY KEY, REFERENCES):
  ```sql
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -33,7 +34,7 @@ VALUES
   ('http://35.jpg', 3),
   ('http://256.jpg', 4);
  ```
-result: 
+Result: 
  1) users
 
 | id   | username  |
@@ -56,16 +57,17 @@ result:
  
 ![link](https://drive.google.com/uc?id=1T0fglgZVUTgzWr7az4EuvhgpzBP9VfZI)
 
----
-# **5.1) Select data from joined tables (JOIN ON):**   
+
+# 5.1) Select data from joined tables (JOIN ON):  
+
 ---
 
-#basic:
+ - **Basic:**
  ```sql
-SELECT url, username FROM photos
-JOIN users ON users.id = photos.user_id;
+ SELECT url, username FROM photos
+ JOIN users ON users.id = photos.user_id;
  ```
-result:
+Result:
 
  | url               | username  |
  |-------------------|-----------|
@@ -76,9 +78,9 @@ result:
  | http://25.jpg     | si93onis  |
  | http://36.jpg     | 99stroman |
  
-#if id of table1 doesn't exist in table2:  
+ - **If id of table1 doesn't exist in table2:**  
  ```sql
-SELECT * FROM photos
+ SELECT * FROM photos
  ```
 1) users
 
@@ -92,8 +94,8 @@ SELECT * FROM photos
  |------|-------------------|----------|
  | 1    | http://two.jpg    | 2686     |
  
-result: **Error**    
-#if id of table1 doesn't exist in table2 (id: NULL):  
+Result: **Error**    
+ - **If id of table1 doesn't exist in table2 (id: NULL):**  
 1) users
 
  | id   | username  |
@@ -106,47 +108,48 @@ result: **Error**
  |------|-------------------|----------|
  | 1    | http://two.jpg    | null     | 
  
-result:
+Result:
 
  | id   | url               | user_id  |
  |------|-------------------|----------|
  | 1    | http://two.jpg    | null     |
 
-#if column with same name repeated in both tables (table.column):
+ - **If column with same name repeated in both tables (table.column):**
  ```sql
 SELECT photos.id FROM photos
 JOIN users ON users.id = photos.user_id;
  ```
 ![link](https://drive.google.com/uc?id=1Ruokio9nZ2kiyAZgouDzGpNQ-f6PdATz)
 
-#if some of the rows doesn't have relation (JOIN TYPES):
+ - **If some of the rows doesn't have relation (JOIN TYPES):**  
+
 ![link](https://drive.google.com/uc?id=1JvMmO2aZzxLMbyT3_6KEfhcNN014CV4a)
 
-#filter joined data (JOIN + WHERE):
+ - **Filter joined data (JOIN + WHERE):**
  ```sql
-SELECT url, photos
+SELECT url, contents
 FROM comments
 JOIN photos ON photos.id = comments.photo_id;
-WHERE comments.user_id - photos.user_id;
+WHERE comments.user_id = photos.user_id;
  ```
 ![link](https://drive.google.com/uc?id=10jVMi3Z_JRnBeFJhTAzgmRkgKtsHTQ5T)
 
-#join 3 tables (JOIN ON):
+ - **Join 3 tables (JOIN ON):**
  ```sql
 SELECT contents, url, username
 FROM comments
 JOIN photos ON photos.id = comments.photo_id;
-Join users ON users.id = photos.user_id AND users.id = comments.user_id
+JOIN users ON users.id = photos.user_id AND users.id = comments.user_id
  ```
 ![link](https://drive.google.com/uc?id=1Io8I2dBaQszIkWCqsgRBfsQ8Gpu6EqfA)
 
 # - Delete joined data (ON DELETE):  
-#basic:
+ - **Basic:**
  ```sql
 DELETE FROM users WHERE id = 1;
  ```
 result: **Error**    
-#cascade:
+ - **Cascade:**
  ```sql
 CREATE TABLE photos (
   id SERIAL PRIMARY KEY,
@@ -167,7 +170,7 @@ result:
 | 5    | http://35.jpg     | 2        |
 | 6    | http://256.jpg    | 2        |
 
-#set null:
+ - **Set null:**
  ```sql
 CREATE TABLE photos (
   id SERIAL PRIMARY KEY,

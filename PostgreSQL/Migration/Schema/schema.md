@@ -1,16 +1,19 @@
+# 1) Schema migration:
+
 ---
-# **1) Schema migration:**  
----
-#git review problem:
+
+## Git review problem:
 ![link](https://drive.google.com/uc?id=1dZuhZmh72tDk-mdAzoCkgIyDM0Hm8BIg)
 
-#deployment db changes problem:  
-problem:  
+## Deployment db changes problem: 
+
+**Problem:**  
 ![link](https://drive.google.com/uc?id=1sJfkpqeo7g23oJJTZX6coWg5GGiUFnoG)
-solving:
+
+**Solving:**
 ![link](https://drive.google.com/uc?id=1EXoRW5h3bTeYJqdMHEiDGaNd4NQUO9vx)
 
-#migration file structure:
+## Migration file structure:
 ![link](https://drive.google.com/uc?id=1fMszrinGO6mnuTn-8obhpKykILr5ImUy)
 ```js
 exports.shorthand = undefined;
@@ -29,6 +32,6 @@ exports.down = pgm => {
   `);
 };
 ```
-#packages:  
+## Packages:  
 ![link](https://drive.google.com/uc?id=1ipzkP7RoKLow1_Ku5Zw7dkFk2bqbmfMc)
 

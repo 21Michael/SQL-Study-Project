@@ -27,7 +27,7 @@
 
 ##Example:
 
-###connection1:
+###Connection1:
 ```sql
 BEGIN;
 UPDATE users SET bank_account = bank_account - 50.00
@@ -37,7 +37,7 @@ COMMIT;
 SAVEPOINT my_savepoint;
 ```
 
-###connection3:
+###Connection3:
 ```sql
 BEGIN;
 UPDATE users SET bank_account = bank_account + 250.00

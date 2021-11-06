@@ -1,9 +1,10 @@
+#2) View - table that referenced to other tables data "if data in tables, on which view referenced, updated, view will be automatically updated too" (CREATE VIEW ... AS ...):
+
 ---
-# **2) View - table that referenced to other tables data "if data in tables, on which view referenced, updated, view will be automatically updated too" (CREATE VIEW ... AS ...):**
----
-#Usage:  
-#1) Creating reference tables based on sub-query for simplifying SQL query:  
-#sub-query expression:
+
+## Usage:  
+### 1) Creating reference tables based on sub-query for simplifying SQL query:  
+**Sub-query expression:**
 ```sql
 SELECT id, name 
 FROM counties
@@ -12,27 +13,27 @@ JOIN (
 ) AS EU_countries
 ON EU_countries.country_id = countries.id;
 ```
-#creating view (EU_countries reference table):  
+**1. Creating view (EU_countries reference table):**  
 ```sql
 CREATE VIEW EU_countries AS (
   SELECT country_id FROM unions WHERE union_name = 'European union'
 );
 ```
-#referencing right to view table (EU_countries) instead of making a sub-query:  
+**2. Referencing right to view table (EU_countries) instead of making a sub-query:**  
 ```sql
 SELECT id, name 
 FROM counties
 JOIN ON EU_countries.country_id = countries.id;
 ```
-#2) Creating reference tables for often used tables (top 10...) instead of ordering and selecting query every time:  
-#1. selecting an ordering query (top biggest):
+### 2) Creating reference tables for often used tables (top 10...) instead of ordering and selecting query every time:  
+**1. Selecting an ordering query (top biggest):**
 ```sql
 SELECT id, name 
 FROM cities
 ORDER BY population
-LIMIT 10;
+LIMIT 5;
 ```
-#2. creating view (top_biggest):
+**2. Creating view (top_biggest):**
 ```sql
 CREATE VIEW top_biggest AS (
   SELECT id, name 
@@ -41,11 +42,11 @@ CREATE VIEW top_biggest AS (
   LIMIT 5
 );
 ```
-#3. selecting from view:
+**3. Selecting from view:**
 ```sql
 SELECT * FROM top_biggest;
 ```
-result (top_biggest view):  
+Result (top_biggest view):  
 
 | id  | name       | population |
 |-----|------------|------------|
@@ -55,16 +56,16 @@ result (top_biggest view):
 | 6   | Dnepr      | 8 000      |
 | 4   | Donetsk    | 7 500      |
 
-#4. updating view referenced table (city):  
+**4. Updating view referenced table (city):**  
 ```sql
 INSERT INTO cities (name, population)
 VALUES (Moscow, 90 000)
 ```
-#5. view table was updated automatically:   
+**5. View table was updated automatically:**   
 ```sql
 SELECT * FROM top_biggest;
 ```
-result (top_biggest view):  
+Result (top_biggest view):  
 
 | id  | name       | population |
 |-----|------------|------------|
@@ -75,16 +76,16 @@ result (top_biggest view):
 | 6   | Dnepr      | 8 000      |
 | 4   | Donetsk    | 7 500      | 
 
-#  **- Syntax:**  
-#1) Creating (CREATE VIEW ... AS ...):  
+##  **Syntax:**  
+### 1) Creating (CREATE VIEW ... AS ...):  
 ```sql
 CREATE VIEW table_name AS (query for creating view table);
 ```
-#2) Updating (REPLACE VIEW ... AS ...):  
+### 2) Updating (REPLACE VIEW ... AS ...):  
 ```sql
-REPLACE VIEWtable_name AS (query for creating new view table);
+REPLACE VIEW table_name AS (query for creating new view table);
 ```
-#3) Deleting (DROP VIEW ...):  
+### 3) Deleting (DROP VIEW ...):  
 ```sql
 DROP VIEW table_name;
 ```

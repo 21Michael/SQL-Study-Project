@@ -1,14 +1,14 @@
----
-# **3) Sub-queries (sub-query AS):**  
---- 
+#**3) Sub-queries (sub-query AS):**  
 
-#  **- Sub-query in SELECT statement:**  
-#basic (can be selected only **single value**):  
+---
+
+## 1. Sub-query in SELECT statement:
+ - **Basic (can be selected only **single value**):**  
 ```sql
-SELECT name, population, (
- SELECT COUNT(area) FROM cities WHERE country = 'Ukraine'
-) AS country_area
- FROM cities WHERE country = 'Ukraine';
+  SELECT name, population, (
+    SELECT COUNT(area) FROM cities WHERE country = 'Ukraine'
+  ) AS country_area
+  FROM cities WHERE country = 'Ukraine';
 ```
 result:  
 
@@ -19,7 +19,7 @@ result:
 | 3    | Kharkiv   | 6000       | 603 628      |
 | 4    | Dnipro    | 4000       | 603 628      |
 
-#mixing sub-queries (can be selected only **single value**):
+ - **Mixing sub-queries (can be selected only **single value**):**
 ```sql
 SELECT (
   SELECT MAX(area) FROM cities WHERE country = 'Ukraine'  
@@ -28,10 +28,9 @@ SELECT (
   SELECT MIN(area) FROM cities WHERE country = 'Ukraine'  
 );
 ```
-result:  
-2767.56  
+result: **2767.56**
 
-#select data from joined table (can be selected only **single value**):  
+ - **Select data from joined table (can be selected only **single value**):**  
 ```sql
 SELECT name, population, (
   SELECT COUNT(*) 
@@ -50,7 +49,7 @@ result:
 | 4    | Spain     | 44000      | 78            |
 
 #  **- Sub-query in FROM statement:**  
-#basic (can be selected only **columns** that will be extracted in outside SELECT statement):
+ - **Basic (can be selected only **columns** that will be extracted in outside SELECT statement):**
 ```sql
 SELECT AVG(amount_of_cities)
 FROM (
@@ -60,8 +59,8 @@ FROM (
 ) 
 AS p;
 ```
-result:  
-1)sub-query:  
+Result:  
+  1) Sub-query:  
 
 | country  | amount_of_cities  |
 |----------|-------------------|
@@ -70,11 +69,10 @@ result:
 | USA      | 2678              |
 | France   | 798               |
 
-2)average amount of cities ((697 + 235 + 2678 + 798) / 4):  
-1099.75  
+  2) Average amount of cities ((697 + 235 + 2678 + 798) / 4): **1099.75**
 
 #  **- Sub-query in JOIN statement:**  
-#basic (can be selected only **columns** that will be extracted in outside SELECT statement):
+ - **Basic (can be selected only **columns** that will be extracted in outside SELECT statement):**
 ```sql
 SELECT id, name 
 FROM counties
@@ -83,8 +81,8 @@ JOIN (
 ) AS EU_countries
 ON EU_countries.country_id = countries.id
 ```
-result:  
-1)sub-query (EU_countries):  
+Result:  
+  1) Sub-query (EU_countries):  
 
 | country_id |
 |------------|
@@ -93,7 +91,7 @@ result:
 | 76577      |
 | 34534      |
 
-2)id, name:  
+  2) id, name:  
 
 | id         | name        |
 |------------|-------------|
@@ -103,22 +101,22 @@ result:
 | 34534      | Netherlands |  
 
 #  **- Sub-query in WHERE + operator (>,=,!=...) statement:**  
-#basic (can be selected only **single value** that will be extracted in outside SELECT statement):  
+ - **Basic (can be selected only **single value** that will be extracted in outside SELECT statement):**  
 ```sql
-SELECT name, country_id 
-FROM cities
-WHERE id = (
-  SELECT id FROM countries WHERE name = 'Ukraine'
-);
+  SELECT name, country_id 
+  FROM cities
+  WHERE id = (
+    SELECT id FROM countries WHERE name = 'Ukraine'
+  );
 ```
-result:  
-1)sub-query:  
+Result:  
+1) sub-query:  
 
 | id            |
 |---------------|
 | 56522876837   |
 
-2)id, name:  
+2) id, name:  
 
 | name        | country_id  |
 |-------------|-------------|
@@ -128,7 +126,7 @@ result:
 | Kharkiv     | 56522876837 |  
 
 #  **- Sub-query in WHERE + special word (IN, (>,=,!=...) + ALL/SOME/ANY) statement:**  
-#IN operator (can be selected only **single column** that will be extracted in outside SELECT statement):
+ - **IN operator (can be selected only **single column** that will be extracted in outside SELECT statement):**
 ```sql
 SELECT id, name 
 FROM counties
@@ -136,8 +134,8 @@ WHERE id IN (
   SELECT country_id FROM unions WHERE union_name = 'European union'
 );
 ```
-result:  
-1)sub-query:  
+Result:  
+1) sub-query:  
 
 | country_id |
 |------------|
@@ -146,7 +144,7 @@ result:
 | 76577      |
 | 34534      |
 
-2)id, name:  
+2) id, name:  
 
 | id         | name        |
 |------------|-------------|
@@ -155,7 +153,7 @@ result:
 | 76577      | Italy       |
 | 34534      | Netherlands |  
 
-# >ALL (grater than all column values) operator:  
+ -  **>ALL (grater than all column values) operator:**  
 ```sql
 SELECT name, population 
 FROM counties
@@ -163,8 +161,8 @@ WHERE population > ALL (
   SELECT population FROM countries WHERE partisipant_of_EU = true
 );
 ```
-result:  
-1)sub-query:
+Result:  
+1) sub-query:
 
 | population |
 |------------|
@@ -173,7 +171,7 @@ result:
 | 4000       |
 | 5000       |
 
-2)name, population:
+2) name, population:
 
 | name        | population |
 |-------------|------------|
@@ -182,7 +180,7 @@ result:
 | Ukraine     | 12000      |
 | Turkey      | 19000      |  
 
-# >SOME/ANY (grater than at least one of values from column) operator:  
+ -  **>SOME/ANY (grater than at least one of values from column) operator:**  
 ```sql
 SELECT name, population 
 FROM counties
@@ -190,8 +188,8 @@ WHERE population > ANY (
   SELECT population FROM countries WHERE partisipant_of_EU = true
 );
 ```
-result:  
-1)sub-query:
+Result:  
+1) sub-query:
 
 | population |
 |------------|
@@ -200,7 +198,7 @@ result:
 | 4000       |
 | 5000       | 
 
-2)name, population:
+2) name, population:
 
 | name        | population |
 |-------------|------------|
@@ -213,7 +211,7 @@ result:
 | Turkey      | 19000      | 
 
 #  **- Sub-query loop by WHERE + special operator (>,=,!=...) statement:**  
-# executing table:   
+**Executing table:**   
 
 | id         |city         | office       | population     |
 |------------|-------------|--------------|----------------|
@@ -227,7 +225,7 @@ result:
 | 76575      | Lviv        | 2            | 8000           |
 | 76572      | Lviv        | 3            | 2000           |
 
-#basic (the biggest office in each city):
+ - **Basic (the biggest office in each city):**
 ```sql
 SELECT city, office, population 
 FROM offices AS of1
@@ -237,9 +235,9 @@ WHERE population = (
   WHERE of2.city = of1.city
 );
 ```
-#Iterations:  
+**Iterations:**  
 1.1) sub-query (max population for Kiev = Kiev):  
-8000  
+**8000**  
 1.2) city, office, population (population = 8000):  
 
 | city         | office       | population     |
@@ -247,7 +245,7 @@ WHERE population = (
 | Kiev         | 2            | 8000           |
 
 2.1) sub-query (max population for Kharkiv = Kharkiv):  
-12000  
+**12000**  
 2.2) city, office, population (population = 12000):
 
 | city         | office       | population     |
@@ -255,14 +253,14 @@ WHERE population = (
 | Kharkiv      | 3            | 12000          |
 
 3.1) sub-query (max population for Lviv = Lviv):  
-8000  
+**8000**  
 3.2) city, office, population (population = 8000):
 
 | city         | office       | population     |
 |--------------|--------------|----------------|
 | Lviv         | 2            | 8000           |
 
-result:  
+Result:  
 
 | city         | office       | population     |
 |--------------|--------------|----------------|

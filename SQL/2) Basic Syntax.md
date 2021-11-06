@@ -1,20 +1,21 @@
+#**2) SQL syntax:**
+
 ---
-# **2) SQL syntax:**  
----
+
 # **- Create table (CREATE):**  
-#basic:
+**Syntax:**
 ```sql
 CREATE TABLE table_name (
   column_name DATA TYPE,
 );
 ```
 # **- Insert data (INSERT):**  
-#insert one row:
+ - **Insert one row:**
 ```sql
 INSERT INTO table_name (column1, column2, column3, column4)
 VALUES (value1, value2, value3, value4);
 ```
-#insert many rows:
+ - **Insert many rows:**
 ```sql
 INSERT INTO table_name (column1, column2, column3, column4)
 VALUES
@@ -23,15 +24,15 @@ VALUES
 (value1, value2, value3, value4);
 ```
 # **- Select data (SELECT):**  
-#select all:
+ - **Select all:**
 ```sql
 SELECT * FROM cities;
 ```
-#select certain columns:
+ - **Select certain columns:**
 ```sql
 SELECT name, country FROM cities;
 ```
-#select column with new name (AS):
+ - **Select column with new name (AS):**
 ```sql
 SELECT name AS location FROM cities;
 
@@ -39,8 +40,9 @@ SELECT name || ', ' || country AS location FROM cities;
 
 SELECT CONCAT(name, ', ', country) AS location FROM cities;
 ```
-#select unique values from column (DISTINCT):  
-existing table:  
+ - **Select unique values from column (DISTINCT):**
+
+existing table (offices):  
 
 | id         |city         | office       | population     |
 |------------|-------------|--------------|----------------|
@@ -61,14 +63,14 @@ result:
 | Kiev       |
 | Kharkiv    |
 
-#select the greatest value from list of values (GREATEST):
+ - **Select the greatest value from list of values (GREATEST):**
 ```sql
 SELECT GREATEST(300, 400, 200);
 ```
-result:  
-400  
+result: 400  
 
-select values grater than 30 or less:   
+ - **Select values grater than 30 or less:**
+
 existing table:  
 
 | price      |
@@ -87,21 +89,17 @@ result:
 
 | greatest   |
 |------------|
-| less       |
 | 106        |
-| less       |
 | 56         |
-| less       |
 | 73         |
 
-#select the least value from list of values (LEAST):  
+ - **Select the least value from list of values (LEAST):**  
 ```sql
 SELECT GREATEST(300, 400, 200);
 ```
-result:  
-200
+result: 200
 
-select values least than 30 or :  
+ - **Select values least than 30 or:**  
 ```sql
 SELECT LEAST(price, 30) FROM price;
 ```
@@ -110,13 +108,10 @@ result:
 | least      |
 |------------|
 | 23         |
-| high       |
 | 13         |
-| high       |
 | 02         |
-| high       |
 
-#select by switch case analog (CASE):
+ - **Select by switch case analog (CASE):**
 ```sql
 SELECT 
 CASE
@@ -138,11 +133,11 @@ result:
 | 'high'     |
 
 # **- Filter selected data (WHERE):**  
-#filter data by comparison operators:
+ - **Filter data by comparison operators:**
 ```sql
 SELECT name, area FROM cities WHERE area > 4000;
 ```
-#filter data by many diff filters (WHERE + AND):
+ - **Filter data by many diff filters (WHERE + AND):**
 ```sql
 SELECT name, area FROM cities WHERE area > 4000 AND name IN ('Kiev', 'Kharkiv');
 ```
@@ -152,7 +147,7 @@ result:
 |------|--------|------|
 | 1    | Kiev   | 5000 |
 
-#filter data by many filters if at least one is true (WHERE + OR):
+ - **Filter data by many filters if at least one is true (WHERE + OR):**
 ```sql
 SELECT name, area FROM cities WHERE area > 4000 OR name IN ('Kiev', 'Kharkiv');
 ```
@@ -163,24 +158,24 @@ result:
 | 1    | Kiev   | 2000 |
 | 2    | Odessa | 4500 |
 
-#filter data by calculated filter (WHERE + operators):
+ - **Filter data by calculated filter (WHERE + operators):**
 ```sql
 SELECT population, area FROM cities WHERE population / area > 4000;
 ```
 
 #  **- Update data (UPDATE):**  
-#basic (update every coincidence!!!):
+ - **basic (update every coincidence!!!):**
 ```sql
 UPDATE cities SET popuation = 36346 WHERE name = 'Odessa';
 ```
 #  **- Delete data (DELETE):**  
-#basic (delete every coincidence!!!):
+ - **basic (delete every coincidence!!!):**
 ```sql
 DELETE FROM cities WHERE name = 'Kiev';
 ```
 
 #  **- Sort data (ORDER BY):**
-#descending (DESC):
+ - **Descending (DESC):**
 ```sql
 SELECT name FROM cities ORDER BY name DESC;
 ```
@@ -192,7 +187,7 @@ result:
 | 3    | Budapest  |
 | 2    | Alushta   |
 
-#ascending *default (ASC):
+ - **Ascending (ASC):**
 ```sql
 SELECT name FROM cities ORDER BY name ASC;
 ```
@@ -205,7 +200,7 @@ result:
 | 1    | Chicago   |
 
 #  **- Limit amount of selecting data (LIMIT):**
-#basic:
+ - **Syntax:**
 ```sql
 SELECT name FROM cities LIMIT 1;
 ```
@@ -216,7 +211,7 @@ result:
 | 2    | Alushta   |
 
 #  **- Offset (start from) selecting data (OFFSET):**
-#basic:
+- **Syntax:**
 ```sql
 SELECT name FROM cities OFFSET 1;
 ```
@@ -229,10 +224,11 @@ result:
 
 ---
 # **2.1) Unit two queries (can unite only columns with same names and data types!!!):**
+
 ---
 
 #  **- Select data from two queries with all common rows from both queries (UNION ALL):**
-#basic:
+**Syntax**:
 ```sql
 (
   SELECT * FROM cities 
