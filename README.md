@@ -50,12 +50,12 @@ Studying SQL language on practise
   8) **Recursive CTE** ✅
 
 ##2) Data access patterns:
-  - **Active Record;**
+  - **Active Record;** ✅
+  - **Data Mapper;**  ✅
   - **DAO;** ✅
   - **Repository;** ✅
 
 ##3) DB patterns:
-  -  **Data Mapper;**
   -  **Identity Map;**
   -  **Unit of Work;**
   -  **Lazy Load;**
