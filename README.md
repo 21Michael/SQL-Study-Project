@@ -49,7 +49,7 @@ Studying SQL language on practise
      - Materialized view'  
   8) **Recursive CTE** ✅
 
-##2) Data access patterns:
+##2) Data access patterns: ✅
   - **Active Record;** ✅
   - **Data Mapper;**  ✅
   - **DAO;** ✅
@@ -68,5 +68,12 @@ Studying SQL language on practise
 ##5) Transactions ✅
 
 ##6) Data normalization
+  1. **1st Normal Form;** ✅
+  2. **2nd Normal Form;** ✅
+  3. **3rd Normal Form;** ✅
+  4. **Boyce-Codd Normal Form (BCNF);** ✅
+  5. **4th Normal Form;** ✅
+  6. **5th Normal Form;** ✅
+  7. **Domain Key Normal Form (DKNF);** ✅
 
 ##7) CRUD (классификация функций по манипуляции данными)

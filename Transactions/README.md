@@ -1,6 +1,5 @@
-#Transactions
+# Transactions
 
----
 ## Services env (without transaction pattern):
 ![link](https://drive.google.com/uc?id=1yuSmjUFZb3GzafBfO45MmywPt2637Blx)
 
@@ -25,9 +24,9 @@
  - ROLLBACK (откатывает (отменяет) изменения);
  - SAVEPOINT (создаёт точку к которой группа транзакций может откатиться);
 
-##Example:
+## Example:
 
-###Connection1:
+### Connection1:
 ```sql
 BEGIN;
 UPDATE users SET bank_account = bank_account - 50.00
@@ -37,7 +36,7 @@ COMMIT;
 SAVEPOINT my_savepoint;
 ```
 
-###Connection3:
+### Connection3:
 ```sql
 BEGIN;
 UPDATE users SET bank_account = bank_account + 250.00
@@ -46,5 +45,5 @@ UPDATE users SET bank_account = bank_account + 250.00
 -- oops ... ERROR!!!!!!!!!!!
 ROLLBACK TO my_savepoint;
 ```
-###Services env (with transaction pattern):
+### Services env (with transaction pattern):
 ![link](https://drive.google.com/uc?id=1nur6dQF5hwX163kg9WFnrLoRJKEl7yuD)
