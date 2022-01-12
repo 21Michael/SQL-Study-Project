@@ -1,6 +1,6 @@
 # Transactions
 
-## Services env (without transaction pattern):
+## Microservices shared DB per service (without transaction pattern):
 ![link](https://drive.google.com/uc?id=1yuSmjUFZb3GzafBfO45MmywPt2637Blx)
 
 ## The Problem: how to make in persistent and consistent?:
@@ -45,5 +45,7 @@ UPDATE users SET bank_account = bank_account + 250.00
 -- oops ... ERROR!!!!!!!!!!!
 ROLLBACK TO my_savepoint;
 ```
-### Services env (with transaction pattern):
+### Shared DB per service (CLASSIC ACID transaction pattern):
 ![link](https://drive.google.com/uc?id=1nur6dQF5hwX163kg9WFnrLoRJKEl7yuD)
+
+

@@ -1,7 +1,7 @@
 # SQL-Study-Project
 Studying SQL language on practise
 
-##1) SQL: ✅
+## 1) SQL: 
   1) **Data Types:** ✅
      - Text types;
      - Number types;
@@ -49,25 +49,41 @@ Studying SQL language on practise
      - Materialized view'  
   8) **Recursive CTE** ✅
 
-##2) Data access patterns: ✅
+## 2) Data access patterns: 
   - **Active Record;** ✅
   - **Data Mapper;**  ✅
   - **DAO;** ✅
   - **Repository;** ✅
 
-##3) DB patterns:
+## 3) DB patterns:
   -  **Identity Map;**
   -  **Unit of Work;**
   -  **Lazy Load;**
 
-##4) PostgreSQL: ✅
+## 4) PostgreSQL: 
   - **Migrations;** ✅
   - **Optimizations;** ✅
   - **Validation;** ✅
 
-##5) Transactions ✅
+## 5) Transactions: 
+  - **ACID;** ✅
+  - **ACD;**
+  - **SQL main transaction commands;** ✅
+  - **Architecture transaction patterns:** 
+    - **Monolithic arch:**
+      - Local transactions / ACID; ✅
+    - **Distributed arch (microservices):**
+      - Two-phase commit (2PC) / ACID; ✅
+      - Saga:
+        - Orchestration / ACD; ✅
+        - Choreography / ACD; ✅
+  - **Transaction roll back patterns:**
+    - **Commit/rollback;** ✅
+    - **Compensatable transactions (sequential);**  ✅
+    - **Pivot transactions;**  ✅
+    - **Retriable transactions;**  ✅
 
-##6) Data normalization
+## 6) Data normalization
   1. **1st Normal Form;** ✅
   2. **2nd Normal Form;** ✅
   3. **3rd Normal Form;** ✅
@@ -76,4 +92,4 @@ Studying SQL language on practise
   6. **5th Normal Form;** ✅
   7. **Domain Key Normal Form (DKNF);** ✅
 
-##7) CRUD (классификация функций по манипуляции данными)
+## 7) CRUD (классификация функций по манипуляции данными)
