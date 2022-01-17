@@ -194,5 +194,4 @@ considered a **distributed transaction.**
           cause the consumer’s credit card to be charged or refunded. As a result, there’s
           a risk that it would need to be updated in lockstep with the order lifecycle
           implemented by Order Service.
-      
-  - ### Parallel pipeline / ACD;
+          

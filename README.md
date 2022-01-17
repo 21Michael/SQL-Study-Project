@@ -67,7 +67,10 @@ Studying SQL language on practise
 
 ## 5) Transactions: 
   - **ACID;** ✅
-  - **ACD;**
+  - **Saga ACD:**
+    - Lack of Isolation anomalies; ✅
+    - Isolation levels;
+    - Countermeasures for handling the lack of Isolation; ✅
   - **SQL main transaction commands;** ✅
   - **Architecture transaction patterns:** 
     - **Monolithic arch:**
