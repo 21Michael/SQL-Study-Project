@@ -17,7 +17,6 @@ impedance mismatch".
 # Structure:
 ![link](https://drive.google.com/uc?id=14KCDDrwanNCw0lhkFpwReaY-IbAOdWkJ)
 
-
 #2) Repository pattern:
 
 ---
