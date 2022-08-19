@@ -12,6 +12,32 @@
 
 ![link](https://drive.google.com/uc?id=1WUWCiErL623bMI9gQaPvCzmrfogvb-gf)
 
+## Usage:
+```js
+    // Service Citie built as active record:
+    class Citie {
+      constructor({ db, name, population, area, mayor }) {
+        this.db = db;
+        this.name = name;
+        this.population = population; 
+        this.area = area; 
+        this.mayor = mayor;
+      }
+      save() {
+        this.db.query(`
+            INSERT INTO cities
+            SET (population, name, area, mayor)
+            VALUES (${this.population}, ${this.name}, ${this.area}, ${this.mayor})
+        `)
+      }
+      // DB logic methods... + buisness logic methods...
+    }
+    
+    // Usage:
+    const citie = new Citie({ db, name, population, area, mayor });
+    citie.save();
+```
+
 ## Pros:
   - Self-descriptive
   - Good choice for domain logic that isn’t too complex, such as creates, reads, updates, and deletes.

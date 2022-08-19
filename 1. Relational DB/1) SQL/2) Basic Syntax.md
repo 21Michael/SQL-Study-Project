@@ -11,35 +11,35 @@ CREATE TABLE table_name (
 ```
 # **- Insert data (INSERT):**  
  - **Insert one row:**
-```sql
-INSERT INTO table_name (column1, column2, column3, column4)
-VALUES (value1, value2, value3, value4);
-```
+    ```sql
+      INSERT INTO table_name (column1, column2, column3, column4)
+      VALUES (value1, value2, value3, value4);
+    ```
  - **Insert many rows:**
-```sql
-INSERT INTO table_name (column1, column2, column3, column4)
-VALUES
-(value1, value2, value3, value4),
-(value1, value2, value3, value4),
-(value1, value2, value3, value4);
-```
+    ```sql
+      INSERT INTO table_name (column1, column2, column3, column4)
+      VALUES
+      (value1, value2, value3, value4),
+      (value1, value2, value3, value4),
+      (value1, value2, value3, value4);
+    ```
 # **- Select data (SELECT):**  
  - **Select all:**
-```sql
-SELECT * FROM cities;
-```
+    ```sql
+      SELECT * FROM cities;
+    ```
  - **Select certain columns:**
-```sql
-SELECT name, country FROM cities;
-```
+    ```sql
+      SELECT name, country FROM cities;
+    ```
  - **Select column with new name (AS):**
-```sql
-SELECT name AS location FROM cities;
-
-SELECT name || ', ' || country AS location FROM cities;
-
-SELECT CONCAT(name, ', ', country) AS location FROM cities;
-```
+    ```sql
+      SELECT name AS location FROM cities;
+      
+      SELECT name || ', ' || country AS location FROM cities;
+      
+      SELECT CONCAT(name, ', ', country) AS location FROM cities;
+    ```
  - **Select unique values from column (DISTINCT):**
 
 existing table (offices):  
