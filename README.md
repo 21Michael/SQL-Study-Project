@@ -100,3 +100,5 @@
     - **Retriable transactions;**  ✅
 
 ## 6. CRUD (классификация функций по манипуляции данными)
+
+## 7. Caching DB:
