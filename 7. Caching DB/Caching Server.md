@@ -17,7 +17,7 @@ files, and images to ensure websites can load faster.
       - **Write-through strategy:**  
         The write-through strategy adds data or updates data in the cache
         whenever data is written to the database.  
-        ![link](https://drive.google.com/uc?id=1N1wJxKEg9vTW_A6kMrXC47auHaKcnuAB)
+        ![Image](https://drive.google.com/uc?id=1N1wJxKEg9vTW_A6kMrXC47auHaKcnuAB)
      
       - **Lazy loading strategy:**  
         Lazy loading is a caching strategy that loads data into the cache 
@@ -33,7 +33,7 @@ files, and images to ensure websites can load faster.
         Your application next writes the data received from the store to 
         the cache. This way, it can be more quickly retrieved the next time
         it's requested.  
-        ![link](https://drive.google.com/uc?id=1xRmYj9o4f4WNXIp08vJ1Qy2QQ6lCFSz3)
+        ![Image](https://drive.google.com/uc?id=1xRmYj9o4f4WNXIp08vJ1Qy2QQ6lCFSz3)
 
   - **<ins>General cache:</ins>**  
     For use-cases that do not need disk-based durability or transactional
@@ -43,7 +43,7 @@ files, and images to ensure websites can load faster.
     Apart from improved speeds, applications also record improved throughput
     at a lower price point. General cache can be used for referenceable 
     data like category listings, product grouping and profile information.  
-    ![link](https://drive.google.com/uc?id=1w-X2iTwmqsCPCSBmgRbv4cU_Qzwum7Sc)
+    ![Image](https://drive.google.com/uc?id=1w-X2iTwmqsCPCSBmgRbv4cU_Qzwum7Sc)
 
   - **<ins>CDN caching:</ins>**   
     A content delivery network or a CDN is a network that caches web content
