@@ -22,7 +22,7 @@ a focus on performance, reliability, and agility.
   - **<ins>Shared-nothing commodity computers:</ins>**  
     Most (but not all) NoSQL systems leverage low-cost commodity processors that have
     separate RAM and disk.
-  - **<ins>It supports linear scalability:</ins>**  
+  - **<ins>It supports linear scalability (horizontal scaling):</ins>**  
     When you add more processors, you get a consistent increase in performance.
 
 

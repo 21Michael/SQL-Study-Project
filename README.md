@@ -66,6 +66,16 @@
   7. **Domain Key Normal Form (DKNF);** ✅
 
 ## 2. Non-Relational DB:
+  - **Dynamo DB:**
+      - WCU / RCU;
+      - API;
+      - Primary keys: Partition key / Partition key + Sort key;
+      - Indexing: LSI, GSI;
+      - Concurrency;
+      - DAX;
+      - Streams;
+      - TTL;
+      - Transactions;
 
 ## 3. Data access patterns:
   - **Active Record;** ✅
