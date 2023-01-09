@@ -1,5 +1,13 @@
 # Transactions
 
+**Transaction solves the problem of inconsistency and persistent of the data:**  
+```text
+<transaction>
+  1) Put -50$ to users (User Table);
+  2) Update users bank account -50$ (Bank Table);
+</transaction>
+```
+
 ## Microservices shared DB per service (without transaction pattern):
 ![link](https://drive.google.com/uc?id=1yuSmjUFZb3GzafBfO45MmywPt2637Blx)
 

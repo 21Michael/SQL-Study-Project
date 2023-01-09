@@ -36,9 +36,11 @@ development without worrying about managing the underlying infrastructure.
     - **GetItem** – Retrieves a single item from a table.
     - **BatchGetItem** – Retrieves up to 100 items from one or more tables.
     - **Query** – Retrieves all items that have a specific partition key (=) 
-      + sort key (=, >, <, <=, >=, begin, between) with filtering.
+      and sort key (=, >, <, <=, >=, begin, between) with filtering.
+      ![image](../../images/query.drawio.png)
     - **Scan (no indexing used)** – Retrieves all items in the specified table 
       or index and then filter them. Use only for getting large amount of data.
+      ![image](../../images/scan.drawio.png)
   - **<ins>Updating data:</ins>**   
     - **UpdateItem** – Modifies one or more attributes in an item. Y
   - **<ins>Deleting data:</ins>**   
@@ -64,6 +66,15 @@ with the table name while creating a table.
 
    ![image](../../images/HowItWorksPartitionKeySortKey%20(1).png)
 
+   **Sort key** adds the ability to sort partition keys by sort key.  
+   **For example:**
+      - primary key: user_id;
+      - sort key: Date;
+   **Query:** 
+   ```js
+    await dynamodb.getItem({ Key: { user_id: 'f5rgf526g546346tgd', date: '2022/06/22' }}).promise()
+   ```
+
 ### 4) Indexing: LSI, GSI:   
 Because secondary indexes consume storage and provisioned throughput, you should keep the
 size of the index as small as possible. Also, the smaller the index, the greater the 
@@ -73,13 +84,43 @@ performance advantage compared to querying the full table.
     but a different sort key. A local secondary index is "local" in the sense that every 
     partition of a local secondary index is scoped to a base table partition that has the
     same partition key value. Max 5 per table. Must be defined when creating table.
+
+    ![image](../../images/LSI.png)
+
   - **Global secondary index** — an index with a partition key and a sort key that can be 
     different from those on the base table. A global secondary index is considered 
     "global" because queries on the index can span all of the data in the base table, 
     across all partitions. Can be added to existing table.
 
+    ![image](../../images/GSI.png)
+
 ### 5) Concurrency:  
+**Concurrency (Optimistic locking) / Realization of Isolation lvl but without atomic lvl** 
+is a strategy to ensure that the client-side item that you are updating
+(or deleting) is the same as the item in Amazon DynamoDB. If you use this strategy, your 
+database writes are protected from being overwritten by the writes of others, and vice versa.
+
+With optimistic locking, each item has an attribute that acts as a version number. If you
+retrieve an item from a table, the application records the version number of that item. 
+You can update the item, but only if the version number on the server side has not changed.
+
+![image](../../images/ddb_concurrency_problem.png)
+
+
+
 ### 6) DAX:  
+DAX is a DynamoDB-compatible caching service that enables you to benefit from fast in-memory 
+performance for demanding applications. DAX addresses three core scenarios:
+
+  1) As an in-memory cache, DAX reduces the response times of eventually consistent read 
+  workloads by an order of magnitude from single-digit milliseconds to microseconds.
+  2) DAX reduces operational and application complexity by providing a managed service 
+  that is API-compatible with DynamoDB. Therefore, it requires only minimal functional
+  changes to use with an existing application.
+  3) For read-heavy or bursty workloads, DAX provides increased throughput and potential 
+  operational cost savings by reducing the need to overprovision read capacity units. 
+  This is especially beneficial for applications that require repeated reads for individual keys.
+
 ### 7) Streams:  
 ### 8) TTL:  
 ### 9) Transactions:  
@@ -89,3 +130,5 @@ for a table, backed by solid state drives (SSDs) and automatically replicated ac
 multiple Availability Zones within an AWS Region.
 
 ![image](../../images/aws-network-diagram-new-page1.webp)
+
+### 11) Session state:  

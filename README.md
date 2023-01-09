@@ -71,11 +71,14 @@
       - API;
       - Primary keys: Partition key / Partition key + Sort key;
       - Indexing: LSI, GSI;
-      - Concurrency;
+      - Concurrency (Optimistic locking) / Isolation lvl;
       - DAX;
       - Streams;
       - TTL;
-      - Transactions;
+      - Transactions:
+        - transactGet;
+        - transactWrite:
+      - Session state;
 
 ## 3. Data access patterns:
   - **Active Record;** ✅
